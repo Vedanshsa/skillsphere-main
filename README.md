@@ -6,24 +6,57 @@ SkillSphere connects people who want to learn with people who can teach. Post sk
 
 ## Tech Stack
 
-- **Backend:** Spring Boot 3.2, Java 17
-- **Security:** Spring Security + JWT
-- **Database:** H2 (dev) / PostgreSQL (prod)
-- **Build:** Maven
+**Backend:**
+- Spring Boot 3.2, Java 17
+- Spring Security + JWT Authentication
+- Spring Data JPA + H2 (dev) / PostgreSQL (prod)
+- Maven
+
+**Frontend:**
+- React 18 + Vite
+- Tailwind CSS
+- React Router
+- Axios
 
 ## Quick Start
 
+### Option 1: Run Both (Recommended)
+
+**Terminal 1 - Backend:**
 ```bash
-# Clone the repository
 git clone https://gitlab.com/vedanshsa-group/skillsphere.git
 cd skillsphere
-
-# Run the application
 ./mvnw spring-boot:run
-
-# App runs on http://localhost:8080
-# H2 Console: http://localhost:8080/h2-console
 ```
+
+**Terminal 2 - Frontend:**
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8080
+- H2 Console: http://localhost:8080/h2-console
+
+### Option 2: Backend Only (API Testing)
+
+```bash
+./mvnw spring-boot:run
+```
+
+Use Postman or curl to test the API at http://localhost:8080
+
+## Features
+
+- ✅ User registration & JWT authentication
+- ✅ Browse and search skills by category
+- ✅ Add skills you can teach / want to learn
+- ✅ Find teachers for any skill
+- ✅ Smart matching (mutual skill exchanges)
+- ✅ User profiles with skill management
+- ✅ Responsive React frontend
 
 ## API Endpoints
 
@@ -61,81 +94,34 @@ cd skillsphere
 | GET | `/api/users/search?name=john` | Search users |
 | GET | `/api/users/matches` | Find mutual skill matches |
 
-## Example Usage
-
-### 1. Register
-```bash
-curl -X POST http://localhost:8080/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "John Doe",
-    "email": "john@example.com",
-    "password": "password123",
-    "bio": "Software developer eager to learn guitar"
-  }'
-```
-
-### 2. Login
-```bash
-curl -X POST http://localhost:8080/api/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{
-    "email": "john@example.com",
-    "password": "password123"
-  }'
-```
-
-### 3. Add a skill you can teach
-```bash
-curl -X POST http://localhost:8080/api/skills/me \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -d '{
-    "skillId": 1,
-    "skillType": "TEACHING",
-    "proficiencyNote": "5 years of Java experience"
-  }'
-```
-
-### 4. Add a skill you want to learn
-```bash
-curl -X POST http://localhost:8080/api/skills/me \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -d '{
-    "skillId": 13,
-    "skillType": "LEARNING",
-    "proficiencyNote": "Complete beginner"
-  }'
-```
-
-### 5. Find your matches
-```bash
-curl http://localhost:8080/api/users/matches \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN"
-```
-
 ## Project Structure
 
 ```
-src/main/java/com/skillsphere/
-├── config/          # Security, JWT, Data seeding
-├── controller/      # REST API endpoints
-├── dto/             # Request/Response objects
-├── entity/          # JPA entities
-├── exception/       # Custom exceptions & handlers
-├── repository/      # Data access layer
-└── service/         # Business logic
+skillsphere/
+├── src/main/java/com/skillsphere/    # Spring Boot Backend
+│   ├── config/                        # Security, JWT, Data seeding
+│   ├── controller/                    # REST API endpoints
+│   ├── dto/                           # Request/Response objects
+│   ├── entity/                        # JPA entities
+│   ├── exception/                     # Custom exceptions
+│   ├── repository/                    # Data access layer
+│   └── service/                       # Business logic
+│
+└── frontend/                          # React Frontend
+    ├── src/
+    │   ├── components/                # Reusable UI components
+    │   ├── context/                   # Auth context
+    │   ├── pages/                     # Page components
+    │   └── services/                  # API client
+    ├── index.html
+    └── package.json
 ```
 
-## Features
+## Screenshots
 
-- ✅ User registration & JWT authentication
-- ✅ Skill browsing and search
-- ✅ Add skills you teach / want to learn
-- ✅ Find teachers for any skill
-- ✅ Smart matching (find mutual exchanges)
-- ✅ User profiles with skill lists
+| Home | Skills | Profile |
+|------|--------|--------|
+| Landing page with hero | Browse & search skills | Manage your skills |
 
 ## Coming Soon
 
@@ -143,7 +129,16 @@ src/main/java/com/skillsphere/
 - ⭐ Reviews and ratings
 - 💬 Real-time messaging
 - 📧 Email notifications
+- 🐳 Docker deployment
+
+## Interview Talking Points
+
+1. **Architecture:** Layered design (Controller → Service → Repository)
+2. **Security:** Stateless JWT auth, BCrypt password hashing
+3. **Matching Algorithm:** JPQL queries for skill-based user matching
+4. **Frontend:** React with context API for state management
+5. **Scaling:** Ready for PostgreSQL, Redis caching, Docker
 
 ---
 
-Built with ❤️ for learning Spring Boot
+Built with ❤️ for learning full-stack development

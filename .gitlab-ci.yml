@@ -8,8 +8,10 @@ variables:
 cache:
   paths:
     - .m2/repository/
+    - frontend/node_modules/
 
-build:
+# Backend Jobs
+build-backend:
   stage: build
   image: maven:3.9-eclipse-temurin-17
   script:
@@ -19,7 +21,7 @@ build:
       - target/
     expire_in: 1 hour
 
-test:
+test-backend:
   stage: test
   image: maven:3.9-eclipse-temurin-17
   script:
@@ -28,3 +30,16 @@ test:
     reports:
       junit: target/surefire-reports/TEST-*.xml
     when: always
+
+# Frontend Jobs
+build-frontend:
+  stage: build
+  image: node:20-alpine
+  script:
+    - cd frontend
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - frontend/dist/
+    expire_in: 1 hour
