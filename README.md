@@ -131,8 +131,6 @@ skillsphere/
 - 📧 Email notifications
 - 🐳 Docker deployment
 
-## Interview Talking Points
-
 1. **Architecture:** Layered design (Controller → Service → Repository)
 2. **Security:** Stateless JWT auth, BCrypt password hashing
 3. **Matching Algorithm:** JPQL queries for skill-based user matching
