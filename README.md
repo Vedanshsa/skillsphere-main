@@ -53,28 +53,7 @@ SkillSphere is a full-stack web application where users register as **tutors**, 
 - ✅ User profiles with skill management
 - ✅ Responsive React frontend
 
-## Project Structure
 
-```
-skillsphere/
-├── src/main/java/com/skillsphere/    # Spring Boot backend
-│   ├── config/                        # Security, JWT, data seeding
-│   ├── controller/                    # REST API endpoints
-│   ├── dto/                           # Request/response objects
-│   ├── entity/                        # JPA entities
-│   ├── exception/                     # Custom exceptions
-│   ├── repository/                    # Data access layer
-│   └── service/                       # Business logic
-│
-└── frontend/                          # React frontend
-    ├── src/
-    │   ├── components/                # Reusable UI components
-    │   ├── context/                   # Auth context
-    │   ├── pages/                     # Page components
-    │   └── services/                  # API client
-    ├── index.html
-    └── package.json
-```
 
 ## Getting Started
 
@@ -100,9 +79,9 @@ npm install
 npm run dev
 ```
 
-| Service     | URL                                                          |
+| Service     | URL                                                           |
 |-------------|---------------------------------------------------------------|
-| Frontend    | http://localhost:3000                                        |
+| Frontend    | http://localhost:3000                                         |
 | Backend API | http://localhost:8080                                         |
 | H2 Console  | http://localhost:8080/h2-console                              |
 
@@ -118,7 +97,7 @@ Test the API with Postman, curl, or any REST client at `http://localhost:8080`.
 
 ### Authentication (Public)
 
-| Method | Endpoint              | Description               |
+| Method | Endpoint              | Description                |
 |--------|-----------------------|----------------------------|
 | POST   | `/api/auth/register`  | Register a new user        |
 | POST   | `/api/auth/login`     | Login and receive JWT token|
@@ -126,7 +105,7 @@ Test the API with Postman, curl, or any REST client at `http://localhost:8080`.
 ### Skills (Public)
 
 | Method | Endpoint                                  | Description           |
-|--------|--------------------------------------------|------------------------|
+|--------|--------------------------------------------|----------------------|
 | GET    | `/api/skills/browse`                      | List all skills       |
 | GET    | `/api/skills/browse/{id}`                 | Get skill details     |
 | GET    | `/api/skills/categories`                  | List all categories   |
@@ -135,8 +114,8 @@ Test the API with Postman, curl, or any REST client at `http://localhost:8080`.
 
 ### Skills (Protected — requires JWT)
 
-| Method | Endpoint                                   | Description                  |
-|--------|----------------------------------------------|--------------------------------|
+| Method | Endpoint                                   | Description                   |
+|--------|----------------------------------------------|-----------------------------|
 | POST   | `/api/skills`                              | Create a new skill            |
 | POST   | `/api/skills/me`                           | Add a skill to your profile   |
 | DELETE | `/api/skills/me/{skillId}?type=TEACHING`   | Remove a skill from profile   |
@@ -146,8 +125,8 @@ Test the API with Postman, curl, or any REST client at `http://localhost:8080`.
 
 ### Users (Protected — requires JWT)
 
-| Method | Endpoint                       | Description                 |
-|--------|----------------------------------|-------------------------------|
+| Method | Endpoint                       | Description                  |
+|--------|----------------------------------|----------------------------|
 | GET    | `/api/users/me`                | Get your profile             |
 | PUT    | `/api/users/me`                | Update your profile          |
 | GET    | `/api/users/{userId}`          | Get a user's profile         |
@@ -225,10 +204,4 @@ Contributions are welcome! Please open an issue to discuss what you'd like to ch
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a pull request
 
-## License
-
-This project is licensed under the MIT License — see the `LICENSE` file for details.
-
----
-
-Built with ❤️ for learning full-stack development.
+Thank you. :)
