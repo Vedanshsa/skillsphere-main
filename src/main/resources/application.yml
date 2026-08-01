@@ -7,7 +7,7 @@ spring:
     url: jdbc:h2:mem:skillsphere
     driver-class-name: org.h2.Driver
     username: sa
-    password: 
+    password:
   
   h2:
     console:
@@ -24,8 +24,8 @@ spring:
 
 # JWT Configuration
 jwt:
-  secret: skillsphere-secret-key-for-jwt-token-generation-min-256-bits-required-here
-  expiration: 86400000  # 24 hours in milliseconds
+  secret: ${JWT_SECRET:skillsphere-dev-only-secret-key-min-256-bits-not-use-in-production}
+  expiration: ${JWT_EXPIRATION:86400000}  # 24 hours in milliseconds
 
 server:
   port: 8080
