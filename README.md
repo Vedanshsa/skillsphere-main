@@ -147,4 +147,5 @@ Mostly the stuff that doesn't show up until you're past the tutorial stage: wiri
 
 ## License
 
-MIT — see `LICENSE`.
+MIT — see [LICENSE](LICENSE).
+
