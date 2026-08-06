@@ -1,12 +1,11 @@
 spring:
-  # PostgreSQL — activate with SPRING_PROFILES_ACTIVE=prod
   datasource:
-    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/skillsphere}
+    url: ${DATABASE_URL}
     driver-class-name: org.postgresql.Driver
-    username: ${DATABASE_USERNAME:skillsphere}
-    password: ${DATABASE_PASSWORD:}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
     hikari:
-      maximum-pool-size: ${DB_POOL_SIZE:20}
+      maximum-pool-size: ${DB_POOL_SIZE:10}
 
   h2:
     console:
@@ -14,9 +13,6 @@ spring:
 
   jpa:
     hibernate:
-      # No Flyway/Liquibase migration tool is wired up yet — 'update' is used so the
-      # schema is created automatically. Before real production traffic, add a
-      # migration tool and switch this to 'validate'.
       ddl-auto: update
     show-sql: false
     properties:
@@ -24,8 +20,6 @@ spring:
         format_sql: false
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
-# JWT secret and expiration MUST be overridden via env vars in production —
-# see the default in application.yml for local/dev only.
 jwt:
   secret: ${JWT_SECRET}
   expiration: ${JWT_EXPIRATION:86400000}
