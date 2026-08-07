@@ -62,7 +62,11 @@ class SkillServiceTest {
     void createSkill_Success() {
         // Arrange
         when(skillRepository.existsByNameIgnoreCase(createRequest.getName())).thenReturn(false);
-        when(skillRepository.save(any(Skill.class))).thenReturn(testSkill);
+        when(skillRepository.save(any(Skill.class))).thenAnswer(invocation -> {
+            Skill skill = invocation.getArgument(0);
+            skill.setId(1L);
+            return skill;
+        });
         when(userSkillRepository.countBySkillIdAndSkillType(1L, SkillType.TEACHING)).thenReturn(0L);
         when(userSkillRepository.countBySkillIdAndSkillType(1L, SkillType.LEARNING)).thenReturn(0L);
 
