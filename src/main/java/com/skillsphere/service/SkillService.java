@@ -44,8 +44,8 @@ public class SkillService {
                 .description(request.getDescription())
                 .build();
 
-        skillRepository.save(skill);
-        return mapToDTO(skill);
+        Skill saved = skillRepository.save(skill);
+        return mapToDTO(saved);
     }
 
     public List<SkillDTO> getAllSkills() {

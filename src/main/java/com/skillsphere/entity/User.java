@@ -34,6 +34,12 @@ public class User {
     @Column(name = "profile_picture_url")
     private String profilePictureUrl;
 
+    // columnDefinition gives existing rows a default when Hibernate adds this column
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT 'USER'")
+    @Builder.Default
+    private Role role = Role.USER;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
     private Set<UserSkill> userSkills = new HashSet<>();
